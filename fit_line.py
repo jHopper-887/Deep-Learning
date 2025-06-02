@@ -13,7 +13,7 @@ bias = 0.23
 X = t.arange(1, 45, 0.5).unsqueeze(dim=1)
 y = X * weights + bias
 
-train_split = int(0.6 * len(X))
+train_split = int(0.75 * len(X))
 X_train, y_train = X[:train_split], y[:train_split]
 X_test, y_test = X[train_split:], y[train_split:]
 
