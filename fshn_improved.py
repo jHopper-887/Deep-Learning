@@ -2,13 +2,11 @@ import torch
 import torch.nn as nn
 from torchvision import datasets, transforms
 
-# Data augmentation and normalization
 transform = transforms.Compose([
     transforms.ToTensor(),
     transforms.Normalize((0.2836,), (0.3842,)),
 ])
 
-# Datasets and Dataloaders
 trainset = datasets.FashionMNIST(
     "Fashion_Mnist", download=True, train=True, transform=transform
 )
@@ -20,7 +18,6 @@ trainloader = torch.utils.data.DataLoader(trainset, batch_size=64, shuffle=True)
 testloader = torch.utils.data.DataLoader(testset, batch_size=64, shuffle=False)
 
 
-# Improved MLP Model
 class FashionModel(nn.Module):
     def __init__(self):
         super().__init__()
@@ -92,5 +89,4 @@ test_acc = evaluate(model, testloader)
 print(f"Train Accuracy: {train_acc:.2f}%")
 print(f"Test Accuracy:  {test_acc:.2f}%")
 
-# Save model weights
 torch.save(model.state_dict(), "fshn_mnist.pth")
